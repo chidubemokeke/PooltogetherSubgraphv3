@@ -1,1 +1,1 @@
-# PooltogetherSubgraphv3
+# PooltogetherSubgraphv3Docs
