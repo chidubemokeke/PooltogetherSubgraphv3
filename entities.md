@@ -27,3 +27,15 @@
 - [MultipleWinnersPrizeStrategy](#MultipleWinnersPrizeStrategy)
 - [MultipleWinnersExternalErc20Award](#MultipleWinnersExternalErc20Award)
 - [MultipleWinnersExternalErc721Award](#MultipleWinnersExternalErc721Award)
+
+
+# Comptroller
+
+| Field                 | Type     | Description                                 |
+| --------------------- | -------- | ------------------------------------------- |
+| id                    | ID!      | Comptroller.address                         |
+| owner                 | Bytes!   |                                             |
+| players               |          |                                             |
+| balanceDrips          |          |                                             |
+| volumeDrips           |          |                                             |
+
