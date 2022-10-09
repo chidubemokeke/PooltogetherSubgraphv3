@@ -1,3 +1,29 @@
 # Entities
 
 ## Entities for the PoolTogether Subgraph are all listed below
+- Comptroller
+- PrizePool
+- CompoundPrizePool
+- StakePrizePool
+- PrizeStrategy
+- SingleRandomWinnerPrizeStrategy
+- Prize
+- AwardedControlledToken
+- AwardedExternalErc20Token
+- AwardedExternalErc721Nft
+- ControlledToken
+- ControlledTokenBalance
+- SingleRandomWinnerExternalErc721Award
+- PrizePoolAccount
+- Account
+- CreditRate
+- CreditBalance
+- DripTokenPlayer
+- BalanceDripPlayer
+- BalanceDrip
+- VolumeDripPlayer
+- VolumeDripPeriod
+- VolumeDrip
+- MultipleWinnersPrizeStrategy
+- MultipleWinnersExternalErc20Award
+- MultipleWinnersExternalErc721Award
