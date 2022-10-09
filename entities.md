@@ -1,3 +1,3 @@
 # Entities
 
-## Entities for the PoolTogether Subgraph are listed below
+## Entities for the PoolTogether Subgraph are all listed below
