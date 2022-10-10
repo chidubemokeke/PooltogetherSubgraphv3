@@ -139,6 +139,147 @@
 
 # AwardedControlledToken
 
-| Field              | Type                            | Description                         |
-| ------------------ | ------------------------------- | ----------------------------------- |
-| id                 | ID!                             | `{prizePool.id}-{winner}`              |
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prizePool.id}-{winner}             |
+| winner     | Bytes!              |                                     |
+| amount     | BigInt!             |                                     |
+| token      | ControlledToken!    |                                     |
+| prize      | Prize!              |                                     |
+
+
+# AwardedExternalErc20Token
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prize.id}-${token.address}         |
+| address    | Bytes!              |                                     |
+| name       | String              |                                     |
+| symbol     | String              |                                     |
+| decimals   | BigInt              |                                     |
+| balanceAwarded | BigInt          |                                     |
+| prize      | Prize!              |                                    |
+| winner     | Bytes               |                                    |
+
+
+# AwardedExternalErc721Nft
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prize.id}-${token.address}         |
+| address    | Bytes!              |                                     |
+| tokenIds   | [BigInt!]           |                                     |
+| prize      | Prize               |                                     |
+| winner     | Bytes               |                                     |
+
+
+# ControlledToken
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {controlledToken.address           |
+| name       | String!              |                                     |
+| symbol     | String!              |                                     |
+| decimals   | BigInt              |                                     |
+| controller | PrizePool           |                                    |
+| totalSupply | BigInt!            |                                    |
+| numberOfHolders | BigInt!        |                                    |
+| balances        | [ControlledTokenBalance!]! | @derivedFrom(field:"controlledToken") |
+
+
+# ControlledTokenBalance
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ---------------------------------------------- |
+| id         | ID!                 | composite key of (address, controlledToken)          |
+| account    | Account!            |                                                |
+| controlledToken | ControlledToken! |                                              |
+| balance     | BigInt   |                                                |
+
+
+# SingleRandomWinnerExternalErc20Award
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prizeStrategy.address}-${token.address}         |
+| address    | Bytes!              |                                     |
+| name       | String              |                                     |
+| symbol     | String              |                                     |
+| decimals   | BigInt              |                                     |
+| prizeStrategy | SingleRandomWinnerPrizeStrategy |                                     |
+
+
+# SingleRandomWinnerExternalErc721Award
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prizeStrategy.address}-${token.address}  |
+| address    | Bytes!              |                                     |
+| tokenIds   | [BigInt!]           |                                     |
+| prizeStrategy | SingleRandomWinnerPrizeStrategy |                            |
+
+
+# PrizePoolAccount 
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | Composite prizerpool id - accountid  |
+| prizePool  | PrizePool!          |                                     |
+| account    | Account!            |                                     |
+| timelockedBalance | BigInt! |                        |
+| unlockTimestamp | BigInt!       |                           |
+
+
+# Account 
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | User Address                   |
+| prizePoolAccounts | [PrizePoolAccount!]! | @derivedFrom(field: "account") |
+| controlledTokenBalances | [ControlledTokenBalance!] | @derivedFrom(field: "account") |
+
+
+# CreditRate
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prizePool.address}-{controlledToken.address}  |
+| prizePool  | PrizePool!          |                                     |
+|creditLimitMantissa | BigInt!   |                                      |
+| creditRateMantissa | BigInt!   |                                      |
+| 
+
+
+# CreditBalance
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prizePool.address}-{controlledToken.address}  |
+| prizePool  | PrizePool!          |                                     |
+| balance    | BigInt        |                                     |
+| timestamp  | BigInt               |                              |
+| initialized | Boolean            |                                |
+
+
+# DripTokenPlayer
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {comptroller.address}-{dripToken.address}-{player.address} |
+| comptroller | Comptroller!       |                                                            |
+| dripToken  | Bytes!              |                                                            |
+| address    | Bytes!              |                                     |
+| balance    | BigInt!        |  Claimable balance                                   |
+
+
+# BalanceDripPlayer 
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {balanceDripId}-${player.address}   |
+| balanceDrip | BalanceDrip! |                                    |
+| address     | Bytes!       |                             |
+
+
+
+
