@@ -33,9 +33,18 @@
 
 | Field                 | Type     | Description                                 |
 | --------------------- | -------- | ------------------------------------------- |
-| id                    | ID!      | Comptroller.address                         |
+| id                    | ID!      | comptroller.address                         |
 | owner                 | Bytes!   |                                             |
 | players               |          |                                             |
 | balanceDrips          |          |                                             |
 | volumeDrips           |          |                                             |
 
+
+# PrizePool
+
+| Field                 | Type     | Description                                 |
+| --------------------- | -------- | ------------------------------------------- |
+| id                    | ID!      | prizePool.address                           |
+| deactivated           | Boolean! |                                             |
+| owner                 | Bytes!   |                                             |
+| reserveRegistry       | Bytes!   |                                             |
