@@ -111,7 +111,7 @@
 | sponsorship          | ControlledToken                           |                                                                    |
 | prizePeriodSeconds   | BigInt!                                   |                                                                    |
 | prizePeriodStartedAt | BigInt!                                   |                                                                    |
-|  prizePeriodEndAt    | BigInt!                                   |                                                                    |
+| prizePeriodEndAt    | BigInt!                                   |                                                                    |
 | externalErc20Awards  | [SingleRandomWinnerExternalErc20Award!]!  | @derivedFrom(field: "prizeStrategy")                               |
 | externalErc721Awards | [SingleRandomWinnerExternalErc721Award!]! | @derivedFrom(field: "prizeStrategy")                               |
 
@@ -281,5 +281,103 @@
 | address     | Bytes!       |                             |
 
 
+# BalanceDrip 
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address} |
+| comptroller | Comptroller!       |                                                            |
+| sourceAddress | Bytes! |                                        |
+| measureToken |  Bytes!    |                                 |
+| dripToken    | Bytes!    |                                |
+| dripRatePerSecond | BigInt |                             |
+| exchangeRateMantissa | BigInt |                        |
+| timestamp            | BigInt |                        |
+| players              | [BalanceDripPlayer!]! | @derivedFrom(field: "balanceDrip") |
+| deactivated          | Boolean! |                                     |
+
+
+# VolumeDripPlayer
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {volumeDripId}-${player.address}    |
+| volumeDrip | VolumeDrip!         |                                     |
+| address    | Bytes!              |                                     |
+| periodIndex | BigInt!            |                                     |
+| balance    | BigInt!        |  Claimable balance                                   |
+
+
+# VolumeDripPeriod 
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | ${volumeDripId}-${periodIndex}      |
+| volumeDrip | VolumeDrip!         |                                     |
+| periodIndex | BigInt!            |                                     |
+| totalSupply | BigInt            |                                    |
+| dripAmount  | BigInt             |                                     |
+| endTime     | BigInt             |                                     |
+| isDripping  | Boolean!           |                                     |
+
+
+# VolumeDrip  
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!            | ${comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address}-${isReferral} |
+| comptroller | Comptroller!       |                                                            |
+| sourceAddress | Bytes! |                                        |
+| measureToken |  Bytes!    |                                 |
+| dripToken    | Bytes!    |                                |
+| referral     | Boolean! |                       |
+| periodSeconds | BigInt  |                       |
+| dripAmount    | BigInt  |                     |
+| periodCount   | BigInt  |                     |
+| deposits      | [VolumeDripPlayer!]! | @derivedFrom(field: "volumeDrip")    |
+| periods       | [VolumeDripPeriod!]! | @derivedFrom(field: "volumeDrip")    |
+| deactivated   | Boolean!     |                                    |
+
+
+# MultipleWinnersPrizeStrategy
+
+| Field                | Type                                      | Description                                           |
+| -------------------- | ---------------------------- | ------------------------------------------------------------------ |
+| id                   | ID!                          | multipleWinners.address (will be same address as PrizeStrategy) |**
+| owner                | Bytes                        |                                                                    | 
+| numberOfWinners     | BigInt                       |                                       |
+| tokenListener        | Bytes                               |                                                           |
+| prizePool            | PrizePool                 |                                                                    |
+| rng                  | Bytes                      |                                                                    | 
+| ticket             | ControlledToken       |                                      |
+| sponsorship        | ControlledToken       |                                      |
+| prizePeriodSeconds   | BigInt!                                   |                                                |
+| prizePeriodStartedAt | BigInt!                                   |                                                |
+| prizePeriodEndAt    | BigInt!                                    |                                               | 
+| externalErc20Awards  | [MultipleWinnersExternalErc20Award!]!  | @derivedFrom(field: "prizeStrategy")              |
+| externalErc721Awards | [MultipleWinnersExternalErc721Award!]! | @derivedFrom(field: "prizeStrategy")              |
+
+
+# MultipleWinnersExternalErc20Award
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prizeStrategy.address}-${token.address}         |
+| address    | Bytes!              |                                     |
+| name       | String              |                                     |
+| symbol     | String              |                                     |
+| decimals   | BigInt              |                                     |
+| balanceAwarded  | BigInt         |                                     |
+| prizeStrategy | SingleRandomWinnerPrizeStrategy |                      |
+
+
+# MultipleWinnersExternalErc721Award
+
+| Field      | Type                | Description                         |
+| ---------- | ------------------- | ----------------------------------- |
+| id         | ID!                 | {prizeStrategy.address}-${token.address}  |
+| address    | Bytes!              |                                     |
+| tokenIds   | [BigInt!]           |                                     |
+| prizeStrategy | MultipleWinnersPrizeStrategy |                         |
 
 
