@@ -81,11 +81,61 @@
 | cToken      | Bytes      |                            |
 
 
-# CompoundPrizePool
+# StakePrizePool
 
 | Field       | Type       | Description                |
 | ----------- | ---------- | -------------------------- |
 | id          | ID!        | compoundPrizePool.address  |
+| stakeToken  | Bytes      |                            |
+
+
+# PrizeStrategy
+
+| Field              | Type                            | Description                         |
+| ------------------ | ------------------------------- | ----------------------------------- |
+| id                 | ID!                             | prizeStrategy.address               |
+| singleRandomWinner | singleRandomWinnerPrizeStrategy |                                     |
+| multipleWinners    | multipleWinnersPrizeStrategy    |                                     |
+
+
+# SingleRandomWinnerPrizeStrategy
+
+| Field                | Type                                      | Description                                                        |
+| -------------------- | ----------------------------------------- | ------------------------------------------------------------------ |
+| id                   | ID!                                       | singleRandomWinner.address (will be same address as PrizeStrategy) |
+| owner                | Bytes                                     |                                                                    |
+| tokenListener        | Comptroller                               |                                                                    |
+| prizePool            | PrizePool                                 |                                                                    |
+| rng                  | Bytes                                     |                                                                    |
+| ticket               | ControlledToken                           |                                                                    |
+| sponsorship          | ControlledToken                           |                                                                    |
+| prizePeriodSeconds   | BigInt!                                   |                                                                    |
+| prizePeriodStartedAt | BigInt!                                   |                                                                    |
+|  prizePeriodEndAt    | BigInt!                                   |                                                                    |
+| externalErc20Awards  | [SingleRandomWinnerExternalErc20Award!]!  | @derivedFrom(field: "prizeStrategy")                               |
+| externalErc721Awards | [SingleRandomWinnerExternalErc721Award!]! | @derivedFrom(field: "prizeStrategy")                               |
+
+
+# Prize
+
+| Field                | Type                                      | Description                                                        |
+| -------------------- | ----------------------------------------- | ------------------------------------------------------------------ |
+| id                   | ID!                                       | prizePool.address - prizeCount        |
+| prizePool            | PrizePool!             |                                                         |
+| awardStartOperator   | Bytes                      |                                |
+| awardedOperator      | Bytes                      |                                |
+| prizePeriodStartedTimestamp | Bytes               |                                |
+| lockBlock             | BigInt            |                                        |
+| awardedBlock          | BigInt                       |                            |
+| awardedTimestamp      | BigInt                      |                             |
+| rngrequestId          | BigInt                       |                           |
+| randomNumber          | BigInt                    |                              |
+| numberOfSubWinners    | BigInt                    |                              |
+| totalTicketSupply     | BigInt                    | cache of num tickets sold when this prize was awarded |
+| awardedControlledTokens | [AwardedControlledToken!]! | @derivedFrom(field: "prize") |
+| awardedExternalErc20Tokens | [AwardedExternalErc20Token!]! | @derivedFrom(field: "prize") |
+| awardedExternalErc721Nfts | [AwardedExternalErc721Nft!]! | @derivedFrom(field: "prize") |
+
 
 
 
