@@ -120,7 +120,7 @@
 
 | Field                | Type                                      | Description                                                        |
 | -------------------- | ----------------------------------------- | ------------------------------------------------------------------ |
-| id                   | ID!                                       | prizePool.address - prizeCount        |
+| id                   | ID!                                       | {prizePool.address}-{prizeCount}       |
 | prizePool            | PrizePool!             |                                                         |
 | awardStartOperator   | Bytes                      |                                |
 | awardedOperator      | Bytes                      |                                |
@@ -137,6 +137,8 @@
 | awardedExternalErc721Nfts | [AwardedExternalErc721Nft!]! | @derivedFrom(field: "prize") |
 
 
+# AwardedControlledToken
 
-
-
+| Field              | Type                            | Description                         |
+| ------------------ | ------------------------------- | ----------------------------------- |
+| id                 | ID!                             | `{prizePool.id}-{winner}`              |
