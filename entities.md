@@ -29,7 +29,7 @@
 - [MultipleWinnersExternalErc721Award](#MultipleWinnersExternalErc721Award)
 
 
-## Comptroller
+# Comptroller
 
 | Field                 | Type     | Description                                 |
 | --------------------- | -------- | ------------------------------------------- |
@@ -40,7 +40,7 @@
 | volumeDrips           |          |                                             |
 
 
-## PrizePool
+# PrizePool
 
 | Field                 | Type              | Description                                 |
 | --------------------- | ----------------- | ------------------------------------------- |
