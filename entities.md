@@ -42,9 +42,51 @@
 
 # PrizePool
 
-| Field                 | Type     | Description                                 |
-| --------------------- | -------- | ------------------------------------------- |
-| id                    | ID!      | prizePool.address                           |
-| deactivated           | Boolean! |                                             |
-| owner                 | Bytes!   |                                             |
-| reserveRegistry       | Bytes!   |                                             |
+| Field                 | Type              | Description                                 |
+| --------------------- | ----------------- | ------------------------------------------- |
+| id                    | ID!               | prizePool.address                           |
+| deactivated           | Boolean!          |                                             |
+| owner                 | Bytes!            |                                             |
+| reserveRegistry       | Bytes!            |                                             |
+| prizeStrategy         | PrizeStrategy     |                                             |
+| prizePoolType         | PrizePoolType     |                                             |
+| compoundPrizePool     | CompoundPrizePool |                                             |
+| stakePrizePool        | StakePrizePool    |                                             |
+| reserveFeeControlledToken | Bytes! |                                        |
+| underlyingCollateralToken | Bytes |                                        |
+| underlyingCollateralDecimals | BigInt |                                    |
+| underlyingCollateralName | String |                                        |
+| underlyingCollateralSymbol | String |                                      |
+| maxExitFeeMantissa | BigInt! |                                             |
+| maxTimelockDuration | BigInt! |                                            |
+| timelockTotalSupply | BigInt! |                                            |
+| liquididtyCap | BigInt! |                                                  |
+| cumulativePrizeGross | BigInt! |                                           |
+| cumulativePrizeReserveFee | BigInt! |                                      |
+| cumulativePrizeNet | BigInt! |                                             |
+| currentPrizeId | BigInt! |                                    |
+| currentState | PrizePoolState! |                               |
+| prizes | [Prize!]! | @derivedFrom(field: "prizePool")          |
+| tokenCreditRates | [CreditRate!]! | @derivedFrom(field: "prizePool") |
+| tokenCreditBalances | [CreditBalance!]! | @derivedFrom(field: "prizePool") |
+| prizePoolAccounts | [PrizePoolAccount!]! | @derivedFrom(field: "prizePool") |
+| controlledToken | [ControlledToken!]! | @derivedFrom(field: "controller") controlled tokens may not exist until transfer is called |
+
+
+# CompoundPrizePool
+
+| Field       | Type       | Description                |
+| ----------- | ---------- | -------------------------- |
+| id          | ID!        | compoundPrizePool.address  |
+| cToken      | Bytes      |                            |
+
+
+# CompoundPrizePool
+
+| Field       | Type       | Description                |
+| ----------- | ---------- | -------------------------- |
+| id          | ID!        | compoundPrizePool.address  |
+
+
+
+
