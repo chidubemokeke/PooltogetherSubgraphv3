@@ -117,49 +117,49 @@
 
 
 # Prize
-
-| Field                | Type                                      | Description                                                        |
-| -------------------- | ----------------------------------------- | ------------------------------------------------------------------ |
-| id                   | ID!                                       | {prizePool.address}-{prizeCount}       |
-| prizePool            | PrizePool!             |                                                         |
-| awardStartOperator   | Bytes                      |                                |
-| awardedOperator      | Bytes                      |                                |
-| prizePeriodStartedTimestamp | Bytes               |                                |
-| lockBlock             | BigInt            |                                        |
-| awardedBlock          | BigInt                       |                            |
-| awardedTimestamp      | BigInt                      |                             |
-| rngrequestId          | BigInt                       |                           |
-| randomNumber          | BigInt                    |                              |
-| numberOfSubWinners    | BigInt                    |                              |
-| totalTicketSupply     | BigInt                    | cache of num tickets sold when this prize was awarded |
-| awardedControlledTokens | [AwardedControlledToken!]! | @derivedFrom(field: "prize") |
-| awardedExternalErc20Tokens | [AwardedExternalErc20Token!]! | @derivedFrom(field: "prize") |
-| awardedExternalErc721Nfts | [AwardedExternalErc721Nft!]! | @derivedFrom(field: "prize") |
+ {Dynamically generated entity type, not mapped to a specific contract}
+| Field                       | Type                          | Description                                            |
+| --------------------------- | ----------------------------- | ------------------------------------------------------ |
+| id                          | ID!                           | {prizePool.address}-{prizeCount}                       |
+| prizePool                   | PrizePool!                    | Relation to the prize pool entity                      |
+| awardStartOperator          | Bytes                         | Address of the award start operator                    |
+| awardedOperator             | Bytes                         | Address of the awarded operator                        |
+| prizePeriodStartedTimestamp | Bytes                         | Timestamp of when the prize period started             |
+| lockBlock                   | BigInt                        | Block where prize was locked                           |
+| awardedBlock                | BigInt                        | Block where prize was awarded                          |
+| awardedTimestamp            | BigInt                        | Timestamp of when the prize was awarded                |
+| rngrequestId                | BigInt                        | Random number generator request Id                     |
+| randomNumber                | BigInt                        | Random Number                                          |
+| numberOfSubWinners          | BigInt                        | Number of sub-winners                                  |
+| totalTicketSupply           | BigInt                        | cache of num tickets sold when this prize was awarded  |
+| awardedControlledTokens     | [AwardedControlledToken!]!    | Data derived at query time in relation to prize entity |
+| awardedExternalErc20Tokens  | [AwardedExternalErc20Token!]! | Data derived at query time in relation to prize entity |
+| awardedExternalErc721Nfts   | [AwardedExternalErc721Nft!]!  | Data derived at query time in relation to prize entity |
 
 
 # AwardedControlledToken
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prizePool.id}-{winner}             |
-| winner     | Bytes!              |                                     |
-| amount     | BigInt!             |                                     |
-| token      | ControlledToken!    |                                     |
-| prize      | Prize!              |                                     |
+| Field      | Type                | Description                             |
+| ---------- | ------------------- | --------------------------------------- |
+| id         | ID!                 | {prizePool.id}-{winner}                 |
+| winner     | Bytes!              | Wallet address of winner                |
+| amount     | BigInt!             | Amount won by winner                    |
+| token      | ControlledToken!    | Relation to the controlled token entity |
+| prize      | Prize!              | Relation to the prize entity            |
 
 
 # AwardedExternalErc20Token
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prize.id}-${token.address}         |
-| address    | Bytes!              |                                     |
-| name       | String              |                                     |
-| symbol     | String              |                                     |
-| decimals   | BigInt              |                                     |
-| balanceAwarded | BigInt          |                                     |
-| prize      | Prize!              |                                    |
-| winner     | Bytes               |                                    |
+| Field          | Type   | Description                         |
+| -------------- | ------ | ----------------------------------- |
+| id             | ID!    | {prize.id}-${token.address}         |
+| address        | Bytes! | awarded Erc20 token address         |
+| name           | String | Name of token                       |
+| symbol         | String | Token symbol                        |
+| decimals       | BigInt | Token decimals                      |
+| balanceAwarded | BigInt | Balance awarded                     |
+| prize          | Prize! | Relation to the prize entity        |
+| winner         | Bytes  | Wallet address of winner            |
 
 
 # AwardedExternalErc721Nft
