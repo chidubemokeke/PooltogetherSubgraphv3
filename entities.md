@@ -149,7 +149,7 @@
 
 
 # AwardedExternalErc20Token
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field          | Type   | Description                         |
 | -------------- | ------ | ----------------------------------- |
 | id             | ID!    | {prize.id}-{token.address}          |
@@ -163,7 +163,7 @@
 
 
 # AwardedExternalErc721Nft
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field      | Type       | Description                      |
 | ---------- | ---------- | -------------------------------- |
 | id         | ID!        | {prize.id}-{token.address}       |
@@ -198,7 +198,7 @@
 
 
 # SingleRandomWinnerExternalErc20Award
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field         | Type                            | Description                                            |
 | ------------- | ------------------------------- | ------------------------------------------------------ |
 | id            | ID!                             | {prizeStrategy.address}-{token.address}                |
@@ -210,7 +210,7 @@
 
 
 # SingleRandomWinnerExternalErc721Award
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field         | Type                            | Description                                            |
 | ------------- | ------------------------------- | ------------------------------------------------------ |
 | id            | ID!                             | {prizeStrategy.address}-{token.address}                |
@@ -240,7 +240,7 @@
 
 
 # CreditRate
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field               | Type       | Description                                   |
 | ------------------- | ---------- | --------------------------------------------- |
 | id                  | ID!        | {prizePool.address}-{controlledToken.address} |
@@ -250,7 +250,7 @@
 
 
 # CreditBalance
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field       | Type       | Description                                   |
 | ----------- | ---------- | --------------------------------------------- |
 | id          | ID!        | {prizePool.address}-{controlledToken.address} |
@@ -261,7 +261,7 @@
 
 
 # DripTokenPlayer
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field       | Type         | Description                                                |
 | ----------- | ------------ | ---------------------------------------------------------- |
 | id          | ID!          | {comptroller.address}-{dripToken.address}-{player.address} |
@@ -272,7 +272,7 @@
 
 
 # BalanceDripPlayer 
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field       | Type         | Description                        |
 | ----------- | -------------| -----------------------------------|
 | id          | ID!          | {balanceDripId}-{player.address}   |
@@ -281,7 +281,7 @@
 
 
 # BalanceDrip 
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field                | Type                  | Description                         |
 | -------------------- | --------------------- | ----------------------------------------------------------------------------------------|
 | id                   | ID!                   | {comptroller.address}-${sourceToken.address}-{measureToken.address}-{dripToken.address} |
@@ -297,7 +297,7 @@
 
 
 # VolumeDripPlayer
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field       | Type        | Description                       |
 | ----------- | ----------- | --------------------------------- |
 | id          | ID!         | {volumeDripId}-{player.address}   |
@@ -308,7 +308,7 @@
 
 
 # VolumeDripPeriod 
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field       | Type        | Description                    |
 | ----------- | ----------- | ------------------------------ |
 | id          | ID!         | {volumeDripId}-{periodIndex}   |
@@ -321,7 +321,7 @@
 
 
 # VolumeDrip  
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field         | Type                 | Description                                                                                        |
 | ------------- | -------------------- | -------------------------------------------------------------------------------------------------- |
 | id            | ID!                  | {comptroller.address}-{sourceToken.address}-{measureToken.address}-{dripToken.address}-{isReferral}|
@@ -358,7 +358,7 @@
 
 
 # MultipleWinnersExternalErc20Award
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field          | Type                            | Description                                            |
 | -------------- | ------------------------------- | ------------------------------------------------------ |
 | id             | ID!                             | {prizeStrategy.address}-${token.address}               |
@@ -371,7 +371,7 @@
 
 
 # MultipleWinnersExternalErc721Award
-
+ {Dynamically generated entity type, not mapped to a specific contract}
 | Field         | Type                         | Description                                        |
 | ------------- | ---------------------------- | -------------------------------------------------- |
 | id            | ID!                          | {prizeStrategy.address}-${token.address}           |
