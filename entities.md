@@ -152,7 +152,7 @@
 
 | Field          | Type   | Description                         |
 | -------------- | ------ | ----------------------------------- |
-| id             | ID!    | {prize.id}-${token.address}         |
+| id             | ID!    | {prize.id}-{token.address}          |
 | address        | Bytes! | awarded Erc20 token address         |
 | name           | String | Name of token                       |
 | symbol         | String | Token symbol                        |
@@ -166,7 +166,7 @@
 
 | Field      | Type       | Description                      |
 | ---------- | ---------- | -------------------------------- |
-| id         | ID!        | {prize.id}-${token.address}      |
+| id         | ID!        | {prize.id}-{token.address}       |
 | address    | Bytes!     | awarded Erc721 nft token address |
 | tokenIds   | [BigInt!]  | Array of token Ids               |
 | prize      | Prize      | Relation to the prize entity     |
@@ -177,7 +177,7 @@
 
 | Field           | Type                       | Description                                             |
 | --------------- | -------------------------- | ------------------------------------------------------- |
-| id              | ID!                        | {controlledToken.address                                |
+| id              | ID!                        | controlledToken.address                                 |
 | name            | String!                    | Controlled token name                                   |
 | symbol          | String!                    | Controlled token symbol                                 |
 | decimals        | BigInt                     | Controlled token decimals                               |
@@ -201,7 +201,7 @@
 
 | Field         | Type                            | Description                                            |
 | ------------- | ------------------------------- | ------------------------------------------------------ |
-| id            | ID!                             | {prizeStrategy.address}-${token.address}               |
+| id            | ID!                             | {prizeStrategy.address}-{token.address}                |
 | address       | Bytes!                          | Wallet address of the winner                           |
 | name          | String                          | Token name                                             |
 | symbol        | String                          | Token symbol                                           |
@@ -213,7 +213,7 @@
 
 | Field         | Type                            | Description                                            |
 | ------------- | ------------------------------- | ------------------------------------------------------ |
-| id            | ID!                             | {prizeStrategy.address}-${token.address}               |
+| id            | ID!                             | {prizeStrategy.address}-{token.address}                |
 | address       | Bytes!                          | Wallet address of the winner                           |
 | tokenIds      | [BigInt!]                       | Token Ids of the winner                                |
 | prizeStrategy | SingleRandomWinnerPrizeStrategy | Relation to single random winner prize strategy entity |
@@ -275,7 +275,7 @@
 
 | Field       | Type         | Description                        |
 | ----------- | -------------| -----------------------------------|
-| id          | ID!          | {balanceDripId}-${player.address}  |
+| id          | ID!          | {balanceDripId}-{player.address}   |
 | balanceDrip | BalanceDrip! | Relation to balance drip entity    |
 | address     | Bytes!       | Player wallet address              |
 
@@ -283,24 +283,24 @@
 # BalanceDrip 
 
 | Field                | Type                  | Description                         |
-| -------------------- | --------------------- | ----------------------------------------------------------------------------------------- |
-| id                   | ID!                   | {comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address} |
-| comptroller          | Comptroller!          | Relation to comptroller entity                                                            |
-| sourceAddress        | Bytes!                | Source address                                                                            |
-| measureToken         | Bytes!                | Measure token address                                                                     |
-| dripToken            | Bytes!                | Drip token address                                                                        |
-| dripRatePerSecond    | BigInt                | Drip rate per second                                                                      |
-| exchangeRateMantissa | BigInt                | exchange rate mantissa                                                                    |
-| timestamp            | BigInt                | Balance drip timestamp                                                                    |
-| players              | [BalanceDripPlayer!]! | Data derived at query time from field:"balanceDrip"                                       |
-| deactivated          | Boolean!              | Checks wether balance drip is deactivated                                                 |
+| -------------------- | --------------------- | ----------------------------------------------------------------------------------------|
+| id                   | ID!                   | {comptroller.address}-${sourceToken.address}-{measureToken.address}-{dripToken.address} |
+| comptroller          | Comptroller!          | Relation to comptroller entity                                                          |
+| sourceAddress        | Bytes!                | Source address                                                                          |
+| measureToken         | Bytes!                | Measure token address                                                                   |
+| dripToken            | Bytes!                | Drip token address                                                                      |
+| dripRatePerSecond    | BigInt                | Drip rate per second                                                                    |
+| exchangeRateMantissa | BigInt                | exchange rate mantissa                                                                  |
+| timestamp            | BigInt                | Balance drip timestamp                                                                  |
+| players              | [BalanceDripPlayer!]! | Data derived at query time from field:"balanceDrip"                                     |
+| deactivated          | Boolean!              | Checks wether balance drip is deactivated                                               |
 
 
 # VolumeDripPlayer
 
 | Field       | Type        | Description                       |
 | ----------- | ----------- | --------------------------------- |
-| id          | ID!         | {volumeDripId}-${player.address}  |
+| id          | ID!         | {volumeDripId}-{player.address}   |
 | volumeDrip  | VolumeDrip! | Relation to volume drip entity    |
 | address     | Bytes!      | Player wallet address             |
 | periodIndex | BigInt!     | Period index                      |
@@ -311,7 +311,7 @@
 
 | Field       | Type        | Description                    |
 | ----------- | ----------- | ------------------------------ |
-| id          | ID!         | ${volumeDripId}-${periodIndex} |
+| id          | ID!         | {volumeDripId}-{periodIndex}   |
 | volumeDrip  | VolumeDrip! | Relation to volume drip entity |
 | periodIndex | BigInt!     | Period index                   |
 | totalSupply | BigInt      | Volume drip total supply       |
@@ -322,61 +322,61 @@
 
 # VolumeDrip  
 
-| Field         | Type                 | Description                         |
-| ------------- | -------------------- | ----------------------------------- |
-| id            | ID!                  | ${comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address}-${isReferral} |
-| comptroller   | Comptroller!         |                                                            |
-| sourceAddress | Bytes!               |                                        |
-| measureToken  | Bytes!               |                                 |
-| dripToken     | Bytes!               |                                |
-| referral      | Boolean!             |                       |
-| periodSeconds | BigInt               |                       |
-| dripAmount    | BigInt               |                     |
-| periodCount   | BigInt               |                     |
-| deposits      | [VolumeDripPlayer!]! | @derivedFrom(field: "volumeDrip")    |
-| periods       | [VolumeDripPeriod!]! | @derivedFrom(field: "volumeDrip")    |
-| deactivated   | Boolean!             |                                    |
+| Field         | Type                 | Description                                                                                        |
+| ------------- | -------------------- | -------------------------------------------------------------------------------------------------- |
+| id            | ID!                  | {comptroller.address}-{sourceToken.address}-{measureToken.address}-{dripToken.address}-{isReferral}|
+| comptroller   | Comptroller!         | Relation to comptroller entity                                                                     |
+| sourceAddress | Bytes!               | Source address                                                                                     |
+| measureToken  | Bytes!               | Measure token address                                                                              |
+| dripToken     | Bytes!               | Drip token address                                                                                 |
+| referral      | Boolean!             | Checks if referral is true or false                                                                |
+| periodSeconds | BigInt               | Volume drip period in seconds                                                                      |
+| dripAmount    | BigInt               | Volume drip amount                                                                                 |
+| periodCount   | BigInt               | Volume drip period count                                                                           |
+| deposits      | [VolumeDripPlayer!]! | Data derived at query time from field:"volumeDrip"                                                 |
+| periods       | [VolumeDripPeriod!]! | Data derived at query time from field:"volumeDrip"                                                 |
+| deactivated   | Boolean!             | Checks wether volume drip is deactivated                                                           |
   
 
 # MultipleWinnersPrizeStrategy
 
-| Field                | Type                                      | Description                                           |
-| -------------------- | ---------------------------- | ------------------------------------------------------------------ |
-| id                   | ID!                          | multipleWinners.address (will be same address as PrizeStrategy) |**
-| owner                | Bytes                        |                                                                    | 
-| numberOfWinners     | BigInt                       |                                       |
-| tokenListener        | Bytes                               |                                                           |
-| prizePool            | PrizePool                 |                                                                    |
-| rng                  | Bytes                      |                                                                    | 
-| ticket             | ControlledToken       |                                      |
-| sponsorship        | ControlledToken       |                                      |
-| prizePeriodSeconds   | BigInt!                                   |                                                |
-| prizePeriodStartedAt | BigInt!                                   |                                                |
-| prizePeriodEndAt    | BigInt!                                    |                                               | 
-| externalErc20Awards  | [MultipleWinnersExternalErc20Award!]!  | @derivedFrom(field: "prizeStrategy")              |
-| externalErc721Awards | [MultipleWinnersExternalErc721Award!]! | @derivedFrom(field: "prizeStrategy")              |
+| Field                | Type                                   | Description                                           |
+| -------------------- | -------------------------------------- | ----------------------------------------------------- |
+| id                   | ID!                                    | multipleWinnersPrizeStrategy.address                  |
+| owner                | Bytes                                  | Wallet address of owner                               | 
+| numberOfWinners      | BigInt                                 | Number of winners                                     |
+| tokenListener        | Bytes                                  | Token listener address                                |
+| prizePool            | PrizePool                              | Relation to prize pool entity                         |
+| rng                  | Bytes                                  | Random number generator address                       | 
+| ticket               | ControlledToken                        | Relation to controlled token entity                   |
+| sponsorship          | ControlledToken                        | Relation to controlled token entity                   |
+| prizePeriodSeconds   | BigInt!                                | Prize period in seconds                               |
+| prizePeriodStartedAt | BigInt!                                | Prize period started at timestamp                     |
+| prizePeriodEndAt     | BigInt!                                | Prize period ended at timestamp                       | 
+| externalErc20Awards  | [MultipleWinnersExternalErc20Award!]!  | Data derived at query time from field:"prizeStrategy" |
+| externalErc721Awards | [MultipleWinnersExternalErc721Award!]! | Data derived at query time from field:"prizeStrategy" |
 
 
 # MultipleWinnersExternalErc20Award
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prizeStrategy.address}-${token.address}         |
-| address    | Bytes!              |                                     |
-| name       | String              |                                     |
-| symbol     | String              |                                     |
-| decimals   | BigInt              |                                     |
-| balanceAwarded  | BigInt         |                                     |
-| prizeStrategy | SingleRandomWinnerPrizeStrategy |                      |
+| Field          | Type                            | Description                                            |
+| -------------- | ------------------------------- | ------------------------------------------------------ |
+| id             | ID!                             | {prizeStrategy.address}-${token.address}               |
+| address        | Bytes!                          | Wallet address of winner                               |
+| name           | String                          | Token name                                             |
+| symbol         | String                          | Token symbol                                           |
+| decimals       | BigInt                          | Token decimals                                         |
+| balanceAwarded | BigInt                          | Balance awarded                                        |
+| prizeStrategy  | SingleRandomWinnerPrizeStrategy | Relation to single random winner prize strategy entity |
 
 
 # MultipleWinnersExternalErc721Award
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prizeStrategy.address}-${token.address}  |
-| address    | Bytes!              |                                     |
-| tokenIds   | [BigInt!]           |                                     |
-| prizeStrategy | MultipleWinnersPrizeStrategy |                         |
+| Field         | Type                         | Description                                        |
+| ------------- | ---------------------------- | -------------------------------------------------- |
+| id            | ID!                          | {prizeStrategy.address}-${token.address}           |
+| address       | Bytes!                       | Wallet address of winner                           |
+| tokenIds      | [BigInt!]                    | Winner token Ids                                   |
+| prizeStrategy | MultipleWinnersPrizeStrategy | Relation to multiple winners prize strategy entity |
 
 
