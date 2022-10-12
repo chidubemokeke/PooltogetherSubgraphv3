@@ -31,46 +31,46 @@
 
 # Comptroller
 
-| Field                 | Type               | Description                                   |
-| --------------------- | ------------------ | --------------------------------------------- |
-| id                    | ID!                | comptroller.address                           |
-| owner                 | Bytes!             | Wallet address of the owner                   |
-| players               |[DripTokenPlayer!]! | Array of player tokens derived at query point |
-| balanceDrips          |[BalanceDrip!]!     | Array of balance drips derived at query point |
-| volumeDrips           |[VolumeDrip!]!      | Array of drip volume derived at query point   |
+| Field                 | Type               | Description                                                                          |
+| --------------------- | ------------------ | ------------------------------------------------------------------------------------ |
+| id                    | ID!                | comptroller.address                                                                  |
+| owner                 | Bytes!             | Wallet address of the owner                                                          |
+| players               |[DripTokenPlayer!]! | Array of players data derived at query time in relation to drip token player entity  |
+| balanceDrips          |[BalanceDrip!]!     | Array of balance drips data derived at query time in relation to balance drip entity |
+| volumeDrips           |[VolumeDrip!]!      | Array of volume drip data derived at query time in relation to volume drip entity    |
 
 
 # PrizePool
 
-| Field                        | Type                 | Description                                 |
-| ---------------------------- | -------------------- | ------------------------------------------- |
-| id                           | ID!                  | prizePool.address                           |
-| deactivated                  | Boolean!             | Checks if prize pool is active              |
-| owner                        | Bytes!               | Wallet address of the owner                 |
-| reserveRegistry              | Bytes!               | Reserve registry contract address           |
-| prizeStrategy                | PrizeStrategy        |                                             |
-| prizePoolType                | PrizePoolType        |                                             |
-| compoundPrizePool            | CompoundPrizePool    |                                             |
-| stakePrizePool               | StakePrizePool       |                                             |
-| reserveFeeControlledToken    | Bytes!               |                                        |
-| underlyingCollateralToken    | Bytes                |                                        |
-| underlyingCollateralDecimals | BigInt               |                                    |
-| underlyingCollateralName     | String               |                                        |
-| underlyingCollateralSymbol   | String               |                                      |
-| maxExitFeeMantissa           | BigInt!              |                                             |
-| maxTimelockDuration          | BigInt!              |                                            |
-| timelockTotalSupply          | BigInt!              |                                            |
-| liquididtyCap                | BigInt!              |                                                  |
-| cumulativePrizeGross         | BigInt!              |                                           |
-| cumulativePrizeReserveFee    | BigInt!              |                                      |
-| cumulativePrizeNet           | BigInt!              |                                             |
-| currentPrizeId               | BigInt!              |                                    |
-| currentState                 | PrizePoolState!      |                               |
-| prizes                       | [Prize!]!            | @derivedFrom(field: "prizePool")          |
-| tokenCreditRates             | [CreditRate!]!       | @derivedFrom(field: "prizePool") |
-| tokenCreditBalances          | [CreditBalance!]!    | @derivedFrom(field: "prizePool") |
-| prizePoolAccounts            | [PrizePoolAccount!]! | @derivedFrom(field: "prizePool") |
-| controlledToken              | [ControlledToken!]!  | @derivedFrom(field: "controller") controlled tokens may not exist until transfer is called |
+| Field                        | Type                 | Description                                                                          |
+| ---------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
+| id                           | ID!                  | prizePool.address                                                                    |
+| deactivated                  | Boolean!             | Checks if prize pool is active                                                       |
+| owner                        | Bytes!               | Wallet address of the owner                                                          |
+| reserveRegistry              | Bytes!               | Reserve registry contract address                                                    |
+| prizeStrategy                | PrizeStrategy        | Relation to prize strategy entity                                                    |
+| prizePoolType                | PrizePoolType        | Relation to prize pool type entity                                                   |
+| compoundPrizePool            | CompoundPrizePool    | Relation to compound prize pool entity                                               |
+| stakePrizePool               | StakePrizePool       | Relation to stake prize pool entity                                                  |
+| reserveFeeControlledToken    | Bytes!               | Reserve fee controlled token address                                                 |
+| underlyingCollateralToken    | Bytes                | Underlying collateral token address                                                  |
+| underlyingCollateralDecimals | BigInt               | Underlying collateral decimals                                                       |
+| underlyingCollateralName     | String               | Underlying collateral token name                                                     |
+| underlyingCollateralSymbol   | String               | Underlying collateral token symbol                                                   |
+| maxExitFeeMantissa           | BigInt!              | Max exit fee mantissa for withdrawal from prize pool                                 |
+| maxTimelockDuration          | BigInt!              | Max time lock duration for prize pool                                                |
+| timelockTotalSupply          | BigInt!              | Time lock total supply                                                               |
+| liquididtyCap                | BigInt!              | Liquidiy cap for prize pool                                                          |
+| cumulativePrizeGross         | BigInt!              | Cumulative prize gross                                                               |
+| cumulativePrizeReserveFee    | BigInt!              | Cumulative prize reserve fee                                                         |
+| cumulativePrizeNet           | BigInt!              | Cumulative prize net                                                                 |
+| currentPrizeId               | BigInt!              | Current prize Id                                                                     |
+| currentState                 | PrizePoolState!      | Current state of prize pool in relation to prize pool state entity                   |
+| prizes                       | [Prize!]!            | Array of prizes data derived at query time in relation to prize entity               |
+| tokenCreditRates             | [CreditRate!]!       | Array of token credit rate data derived at query time in relation to prize entity    |
+| tokenCreditBalances          | [CreditBalance!]!    | Array of token credit balance data derived at query time in relation to prize entity |
+| prizePoolAccounts            | [PrizePoolAccount!]! | Array of prize pool accounts data derived at query time in relation to prize entity  |
+| controlledToken              | [ControlledToken!]!  | Array of controlled token data derived at query time in relation to controller entity|
 
 
 # CompoundPrizePool
