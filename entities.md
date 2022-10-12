@@ -23,7 +23,7 @@
 - [BalanceDrip](#BalanceDrip)
 - [VolumeDripPlayer](#VolumeDripPlayer)
 - [VolumeDripPeriod](#VolumeDripPeriod)
-- [VolumeDrip](VolumeDrip)
+- [VolumeDrip](#VolumeDrip)
 - [MultipleWinnersPrizeStrategy](#MultipleWinnersPrizeStrategy)
 - [MultipleWinnersExternalErc20Award](#MultipleWinnersExternalErc20Award)
 - [MultipleWinnersExternalErc721Award](#MultipleWinnersExternalErc721Award)
