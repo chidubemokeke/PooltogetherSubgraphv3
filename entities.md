@@ -31,13 +31,13 @@
 
 # Comptroller
 
-| Field                 | Type               | Description                                                                          |
-| --------------------- | ------------------ | ------------------------------------------------------------------------------------ |
-| id                    | ID!                | comptroller.address                                                                  |
-| owner                 | Bytes!             | Wallet address of the owner                                                          |
-| players               |[DripTokenPlayer!]! | Array of players data derived at query time in relation to drip token player entity  |
-| balanceDrips          |[BalanceDrip!]!     | Array of balance drips data derived at query time in relation to balance drip entity |
-| volumeDrips           |[VolumeDrip!]!      | Array of volume drip data derived at query time in relation to volume drip entity    |
+| Field                 | Type               | Description                                                        |
+| --------------------- | ------------------ | -------------------------------------------------------------------|
+| id                    | ID!                | comptroller.address                                                |
+| owner                 | Bytes!             | Wallet address of the owner                                        |
+| players               |[DripTokenPlayer!]! | Data derived at query time in relation to drip token player entity |
+| balanceDrips          |[BalanceDrip!]!     | Data derived at query time in relation to balance drip entity      |
+| volumeDrips           |[VolumeDrip!]!      | Data derived at query time in relation to volume drip entity       |
 
 
 # PrizePool
