@@ -31,46 +31,46 @@
 
 # Comptroller
 
-| Field                 | Type               | Description                                                        |
-| --------------------- | ------------------ | -------------------------------------------------------------------|
-| id                    | ID!                | comptroller.address                                                |
-| owner                 | Bytes!             | Wallet address of the owner                                        |
-| players               |[DripTokenPlayer!]! | Data derived at query time in relation to drip token player entity |
-| balanceDrips          |[BalanceDrip!]!     | Data derived at query time in relation to balance drip entity      |
-| volumeDrips           |[VolumeDrip!]!      | Data derived at query time in relation to volume drip entity       |
+| Field                 | Type               | Description                                          |
+| --------------------- | ------------------ | -----------------------------------------------------|
+| id                    | ID!                | comptroller.address                                  |
+| owner                 | Bytes!             | Wallet address of the owner                          |
+| players               |[DripTokenPlayer!]! | Data derived at query time from field:"comptroller"  |
+| balanceDrips          |[BalanceDrip!]!     | Data derived at query time from field:"comptroller"  |
+| volumeDrips           |[VolumeDrip!]!      | Data derived at query time from field:"comptroller"  |
 
 
 # PrizePool
 
-| Field                        | Type                 | Description                                                        |
-| ---------------------------- | -------------------- | -------------------------------------------------------------------|
-| id                           | ID!                  | prizePool.address                                                  |
-| deactivated                  | Boolean!             | Checks if prize pool is active                                     |
-| owner                        | Bytes!               | Wallet address of the owner                                        |
-| reserveRegistry              | Bytes!               | Reserve registry contract address                                  |
-| prizeStrategy                | PrizeStrategy        | Relation to prize strategy entity                                  |
-| prizePoolType                | PrizePoolType        | Relation to prize pool type entity                                 |
-| compoundPrizePool            | CompoundPrizePool    | Relation to compound prize pool entity                             |
-| stakePrizePool               | StakePrizePool       | Relation to stake prize pool entity                                |
-| reserveFeeControlledToken    | Bytes!               | Reserve fee controlled token address                               |
-| underlyingCollateralToken    | Bytes                | Underlying collateral token address                                |
-| underlyingCollateralDecimals | BigInt               | Underlying collateral decimals                                     |
-| underlyingCollateralName     | String               | Underlying collateral token name                                   |
-| underlyingCollateralSymbol   | String               | Underlying collateral token symbol                                 |
-| maxExitFeeMantissa           | BigInt!              | Max exit fee mantissa for withdrawal from prize pool               |
-| maxTimelockDuration          | BigInt!              | Max time lock duration for prize pool                              |
-| timelockTotalSupply          | BigInt!              | Time lock total supply                                             |
-| liquididtyCap                | BigInt!              | Liquidiy cap for prize pool                                        |
-| cumulativePrizeGross         | BigInt!              | Cumulative prize gross                                             |
-| cumulativePrizeReserveFee    | BigInt!              | Cumulative prize reserve fee                                       |
-| cumulativePrizeNet           | BigInt!              | Cumulative prize net                                               |
-| currentPrizeId               | BigInt!              | Current prize Id                                                   |
-| currentState                 | PrizePoolState!      | Current state of prize pool in relation to prize pool state entity |
-| prizes                       | [Prize!]!            | Data derived at query time in relation to prize entity             |
-| tokenCreditRates             | [CreditRate!]!       | Data derived at query time in relation to prize entity             |
-| tokenCreditBalances          | [CreditBalance!]!    | Data derived at query time in relation to prize entity             |
-| prizePoolAccounts            | [PrizePoolAccount!]! | Data derived at query time in relation to prize entity             |
-| controlledToken              | [ControlledToken!]!  | Data derived at query time in relation to controller entity        |
+| Field                        | Type                 | Description                                           |
+| ---------------------------- | -------------------- | ------------------------------------------------------|
+| id                           | ID!                  | prizePool.address                                     |
+| deactivated                  | Boolean!             | Checks if prize pool is active                        |
+| owner                        | Bytes!               | Wallet address of the owner                           |
+| reserveRegistry              | Bytes!               | Reserve registry contract address                     |
+| prizeStrategy                | PrizeStrategy        | Relation to prize strategy entity                     |
+| prizePoolType                | PrizePoolType        | Relation to prize pool type entity                    |
+| compoundPrizePool            | CompoundPrizePool    | Relation to compound prize pool entity                |
+| stakePrizePool               | StakePrizePool       | Relation to stake prize pool entity                   |
+| reserveFeeControlledToken    | Bytes!               | Reserve fee controlled token address                  |
+| underlyingCollateralToken    | Bytes                | Underlying collateral token address                   |
+| underlyingCollateralDecimals | BigInt               | Underlying collateral decimals                        |
+| underlyingCollateralName     | String               | Underlying collateral token name                      |
+| underlyingCollateralSymbol   | String               | Underlying collateral token symbol                    |
+| maxExitFeeMantissa           | BigInt!              | Max exit fee mantissa for withdrawal from prize pool  |
+| maxTimelockDuration          | BigInt!              | Max time lock duration for prize pool                 |
+| timelockTotalSupply          | BigInt!              | Time lock total supply                                |
+| liquididtyCap                | BigInt!              | Liquidiy cap for prize pool                           |
+| cumulativePrizeGross         | BigInt!              | Cumulative prize gross                                |
+| cumulativePrizeReserveFee    | BigInt!              | Cumulative prize reserve fee                          |
+| cumulativePrizeNet           | BigInt!              | Cumulative prize net                                  |
+| currentPrizeId               | BigInt!              | Current prize Id                                      |
+| currentState                 | PrizePoolState!      | Relation to prize pool state entity                   |
+| prizes                       | [Prize!]!            | Data derived at query time from field:"prizePool"     |
+| tokenCreditRates             | [CreditRate!]!       | Data derived at query time from field:"prizePool"     |
+| tokenCreditBalances          | [CreditBalance!]!    | Data derived at query time from field:"prizePool"     |
+| prizePoolAccounts            | [PrizePoolAccount!]! | Data derived at query time from field:"prizePool"     |
+| controlledToken              | [ControlledToken!]!  | Data derived at query time from field:"controller"    |
 
 
 # CompoundPrizePool
@@ -91,11 +91,11 @@
 
 # PrizeStrategy
 
-| Field              | Type                            | Description                                     |
-| ------------------ | ------------------------------- | ----------------------------------------------- |
-| id                 | ID!                             | prizeStrategy.address                           |
-| singleRandomWinner | singleRandomWinnerPrizeStrategy | relation to single random winner prize strategy |
-| multipleWinners    | multipleWinnersPrizeStrategy    | relation to multiple winners prize strategy     |
+| Field              | Type                            | Description                                            |
+| ------------------ | ------------------------------- | ------------------------------------------------------ |
+| id                 | ID!                             | prizeStrategy.address                                  |
+| singleRandomWinner | singleRandomWinnerPrizeStrategy | relation to single random winner prize strategy entity |
+| multipleWinners    | multipleWinnersPrizeStrategy    | relation to multiple winners prize strategy entity     |
 
 
 # SingleRandomWinnerPrizeStrategy
@@ -112,8 +112,8 @@
 | prizePeriodSeconds   | BigInt!                                   | Prize period interval in seconds                                   |
 | prizePeriodStartedAt | BigInt!                                   | Prize period started at timestamp                                  |
 | prizePeriodEndAt     | BigInt!                                   | Prize period ended at timestamp                                    |
-| externalErc20Awards  | [SingleRandomWinnerExternalErc20Award!]!  | Data derived at query time in relation to prize strategy entity    |
-| externalErc721Awards | [SingleRandomWinnerExternalErc721Award!]! | Data derived at query time in relation to prize strategy entity    |
+| externalErc20Awards  | [SingleRandomWinnerExternalErc20Award!]!  | Data derived at query time from field:"prizeStrategy"              |
+| externalErc721Awards | [SingleRandomWinnerExternalErc721Award!]! | Data derived at query time from field:"prizeStrategy"              |
 
 
 # Prize
@@ -132,9 +132,9 @@
 | randomNumber                | BigInt                        | Random Number                                          |
 | numberOfSubWinners          | BigInt                        | Number of sub-winners                                  |
 | totalTicketSupply           | BigInt                        | cache of num tickets sold when this prize was awarded  |
-| awardedControlledTokens     | [AwardedControlledToken!]!    | Data derived at query time in relation to prize entity |
-| awardedExternalErc20Tokens  | [AwardedExternalErc20Token!]! | Data derived at query time in relation to prize entity |
-| awardedExternalErc721Nfts   | [AwardedExternalErc721Nft!]!  | Data derived at query time in relation to prize entity |
+| awardedControlledTokens     | [AwardedControlledToken!]!    | Data derived at query time from field:"prize"          |
+| awardedExternalErc20Tokens  | [AwardedExternalErc20Token!]! | Data derived at query time from field:"prize"          |
+| awardedExternalErc721Nfts   | [AwardedExternalErc721Nft!]!  | Data derived at query time from field:"prize"          |
 
 
 # AwardedControlledToken
@@ -164,180 +164,179 @@
 
 # AwardedExternalErc721Nft
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prize.id}-${token.address}         |
-| address    | Bytes!              |                                     |
-| tokenIds   | [BigInt!]           |                                     |
-| prize      | Prize               |                                     |
-| winner     | Bytes               |                                     |
+| Field      | Type       | Description                      |
+| ---------- | ---------- | -------------------------------- |
+| id         | ID!        | {prize.id}-${token.address}      |
+| address    | Bytes!     | awarded Erc721 nft token address |
+| tokenIds   | [BigInt!]  | Array of token Ids               |
+| prize      | Prize      | Relation to the prize entity     |
+| winner     | Bytes      | Wallet address of winner         |
 
 
 # ControlledToken
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {controlledToken.address           |
-| name       | String!              |                                     |
-| symbol     | String!              |                                     |
-| decimals   | BigInt              |                                     |
-| controller | PrizePool           |                                    |
-| totalSupply | BigInt!            |                                    |
-| numberOfHolders | BigInt!        |                                    |
-| balances        | [ControlledTokenBalance!]! | @derivedFrom(field:"controlledToken") |
+| Field           | Type                       | Description                                             |
+| --------------- | -------------------------- | ------------------------------------------------------- |
+| id              | ID!                        | {controlledToken.address                                |
+| name            | String!                    | Controlled token name                                   |
+| symbol          | String!                    | Controlled token symbol                                 |
+| decimals        | BigInt                     | Controlled token decimals                               |
+| controller      | PrizePool                  | Relation to prize pool entity                           |
+| totalSupply     | BigInt!                    | Total supply of controlled token                        |
+| numberOfHolders | BigInt!                    | Number of controlled token holders                      |
+| balances        | [ControlledTokenBalance!]! | Data derived at query time from field:"controlledToken" |
 
 
 # ControlledTokenBalance
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ---------------------------------------------- |
-| id         | ID!                 | composite key of (address, controlledToken)          |
-| account    | Account!            |                                                |
-| controlledToken | ControlledToken! |                                              |
-| balance     | BigInt   |                                                |
+| Field           | Type             | Description                                 |
+| --------------- | ---------------- | --------------------------------------------|
+| id              | ID!              | composite key of (address, controlledToken) |
+| account         | Account!         | User account                                |
+| controlledToken | ControlledToken! | Relation to controlled token entity         |
+| balance         | BigInt           | Controlled token balance                    |
 
 
 # SingleRandomWinnerExternalErc20Award
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prizeStrategy.address}-${token.address}         |
-| address    | Bytes!              |                                     |
-| name       | String              |                                     |
-| symbol     | String              |                                     |
-| decimals   | BigInt              |                                     |
-| prizeStrategy | SingleRandomWinnerPrizeStrategy |                                     |
+| Field         | Type                            | Description                                            |
+| ------------- | ------------------------------- | ------------------------------------------------------ |
+| id            | ID!                             | {prizeStrategy.address}-${token.address}               |
+| address       | Bytes!                          | Wallet address of the winner                           |
+| name          | String                          | Token name                                             |
+| symbol        | String                          | Token symbol                                           |
+| decimals      | BigInt                          | Token decimals                                         |
+| prizeStrategy | SingleRandomWinnerPrizeStrategy | Relation to single random winner prize strategy entity |
 
 
 # SingleRandomWinnerExternalErc721Award
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prizeStrategy.address}-${token.address}  |
-| address    | Bytes!              |                                     |
-| tokenIds   | [BigInt!]           |                                     |
-| prizeStrategy | SingleRandomWinnerPrizeStrategy |                            |
+| Field         | Type                            | Description                                            |
+| ------------- | ------------------------------- | ------------------------------------------------------ |
+| id            | ID!                             | {prizeStrategy.address}-${token.address}               |
+| address       | Bytes!                          | Wallet address of the winner                           |
+| tokenIds      | [BigInt!]                       | Token Ids of the winner                                |
+| prizeStrategy | SingleRandomWinnerPrizeStrategy | Relation to single random winner prize strategy entity |
 
 
 # PrizePoolAccount 
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | Composite prizerpool id - accountid  |
-| prizePool  | PrizePool!          |                                     |
-| account    | Account!            |                                     |
-| timelockedBalance | BigInt! |                        |
-| unlockTimestamp | BigInt!       |                           |
+| Field             | Type       | Description                                |
+| ----------------- | --------   | ------------------------------------------ |
+| id                | ID!        | {Composite prizerpool id} - {accountid}    |
+| prizePool         | PrizePool! | Relation to prize pool entity              |
+| account           | Account!   | Relation to account entity                 |
+| timelockedBalance | BigInt!    | Time locked balance for prize pool account |
+| unlockTimestamp   | BigInt!    | Unlocked timestamp for prize pool account  |
 
 
 # Account 
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | User Address                   |
-| prizePoolAccounts | [PrizePoolAccount!]! | @derivedFrom(field: "account") |
-| controlledTokenBalances | [ControlledTokenBalance!] | @derivedFrom(field: "account") |
+| Field                   | Type                      | Description                                     |
+| ----------------------- | ------------------------- | ----------------------------------------------- |
+| id                      | ID!                       | User Address                                    |
+| prizePoolAccounts       | [PrizePoolAccount!]!      | Data derived at query time from field:"account" |
+| controlledTokenBalances | [ControlledTokenBalance!] | Data derived at query time from field:"account" |
 
 
 # CreditRate
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prizePool.address}-{controlledToken.address}  |
-| prizePool  | PrizePool!          |                                     |
-|creditLimitMantissa | BigInt!   |                                      |
-| creditRateMantissa | BigInt!   |                                      |
-| 
+| Field               | Type       | Description                                   |
+| ------------------- | ---------- | --------------------------------------------- |
+| id                  | ID!        | {prizePool.address}-{controlledToken.address} |
+| prizePool           | PrizePool! | Relation to prize pool entity                 |
+| creditLimitMantissa | BigInt!    | Credit limit mantissa                         |
+| creditRateMantissa  | BigInt!    | Credit rate mantissa                          |
 
 
 # CreditBalance
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {prizePool.address}-{controlledToken.address}  |
-| prizePool  | PrizePool!          |                                     |
-| balance    | BigInt        |                                     |
-| timestamp  | BigInt               |                              |
-| initialized | Boolean            |                                |
+| Field       | Type       | Description                                   |
+| ----------- | ---------- | --------------------------------------------- |
+| id          | ID!        | {prizePool.address}-{controlledToken.address} |
+| prizePool   | PrizePool! | Relation to prize pool entity                 |
+| balance     | BigInt     | Credit balance                                |
+| timestamp   | BigInt     | Credit balance timestamp                      |
+| initialized | Boolean    | Checks wether crdit balance is initialized    |
 
 
 # DripTokenPlayer
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {comptroller.address}-{dripToken.address}-{player.address} |
-| comptroller | Comptroller!       |                                                            |
-| dripToken  | Bytes!              |                                                            |
-| address    | Bytes!              |                                     |
-| balance    | BigInt!        |  Claimable balance                                   |
+| Field       | Type         | Description                                                |
+| ----------- | ------------ | ---------------------------------------------------------- |
+| id          | ID!          | {comptroller.address}-{dripToken.address}-{player.address} |
+| comptroller | Comptroller! | Relation to comptroller entity                             |
+| dripToken   | Bytes!       | Address for drip token                                     |
+| address     | Bytes!       | Player wallet address                                      |
+| balance     | BigInt!      | Claimable balance                                          |
 
 
 # BalanceDripPlayer 
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {balanceDripId}-${player.address}   |
-| balanceDrip | BalanceDrip! |                                    |
-| address     | Bytes!       |                             |
+| Field       | Type         | Description                        |
+| ----------- | -------------| -----------------------------------|
+| id          | ID!          | {balanceDripId}-${player.address}  |
+| balanceDrip | BalanceDrip! | Relation to balance drip entity    |
+| address     | Bytes!       | Player wallet address              |
 
 
 # BalanceDrip 
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address} |
-| comptroller | Comptroller!       |                                                            |
-| sourceAddress | Bytes! |                                        |
-| measureToken |  Bytes!    |                                 |
-| dripToken    | Bytes!    |                                |
-| dripRatePerSecond | BigInt |                             |
-| exchangeRateMantissa | BigInt |                        |
-| timestamp            | BigInt |                        |
-| players              | [BalanceDripPlayer!]! | @derivedFrom(field: "balanceDrip") |
-| deactivated          | Boolean! |                                     |
+| Field                | Type                  | Description                         |
+| -------------------- | --------------------- | ----------------------------------------------------------------------------------------- |
+| id                   | ID!                   | {comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address} |
+| comptroller          | Comptroller!          | Relation to comptroller entity                                                            |
+| sourceAddress        | Bytes!                | Source address                                                                            |
+| measureToken         | Bytes!                | Measure token address                                                                     |
+| dripToken            | Bytes!                | Drip token address                                                                        |
+| dripRatePerSecond    | BigInt                | Drip rate per second                                                                      |
+| exchangeRateMantissa | BigInt                | exchange rate mantissa                                                                    |
+| timestamp            | BigInt                | Balance drip timestamp                                                                    |
+| players              | [BalanceDripPlayer!]! | Data derived at query time from field:"balanceDrip"                                       |
+| deactivated          | Boolean!              | Checks wether balance drip is deactivated                                                 |
 
 
 # VolumeDripPlayer
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | {volumeDripId}-${player.address}    |
-| volumeDrip | VolumeDrip!         |                                     |
-| address    | Bytes!              |                                     |
-| periodIndex | BigInt!            |                                     |
-| balance    | BigInt!        |  Claimable balance                                   |
+| Field       | Type        | Description                       |
+| ----------- | ----------- | --------------------------------- |
+| id          | ID!         | {volumeDripId}-${player.address}  |
+| volumeDrip  | VolumeDrip! | Relation to volume drip entity    |
+| address     | Bytes!      | Player wallet address             |
+| periodIndex | BigInt!     | Period index                      |
+| balance     | BigInt!     | Claimable balance                 |
 
 
 # VolumeDripPeriod 
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!                 | ${volumeDripId}-${periodIndex}      |
-| volumeDrip | VolumeDrip!         |                                     |
-| periodIndex | BigInt!            |                                     |
-| totalSupply | BigInt            |                                    |
-| dripAmount  | BigInt             |                                     |
-| endTime     | BigInt             |                                     |
-| isDripping  | Boolean!           |                                     |
+| Field       | Type        | Description                    |
+| ----------- | ----------- | ------------------------------ |
+| id          | ID!         | ${volumeDripId}-${periodIndex} |
+| volumeDrip  | VolumeDrip! | Relation to volume drip entity |
+| periodIndex | BigInt!     | Period index                   |
+| totalSupply | BigInt      | Volume drip total supply       |
+| dripAmount  | BigInt      | Drip amount                    |
+| endTime     | BigInt      | Drip end time                  |
+| isDripping  | Boolean!    | Checks wether drip is active   |
 
 
 # VolumeDrip  
 
-| Field      | Type                | Description                         |
-| ---------- | ------------------- | ----------------------------------- |
-| id         | ID!            | ${comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address}-${isReferral} |
-| comptroller | Comptroller!       |                                                            |
-| sourceAddress | Bytes! |                                        |
-| measureToken |  Bytes!    |                                 |
-| dripToken    | Bytes!    |                                |
-| referral     | Boolean! |                       |
-| periodSeconds | BigInt  |                       |
-| dripAmount    | BigInt  |                     |
-| periodCount   | BigInt  |                     |
+| Field         | Type                 | Description                         |
+| ------------- | -------------------- | ----------------------------------- |
+| id            | ID!                  | ${comptroller.address}-${sourceToken.address}-${measureToken.address}-${dripToken.address}-${isReferral} |
+| comptroller   | Comptroller!         |                                                            |
+| sourceAddress | Bytes!               |                                        |
+| measureToken  | Bytes!               |                                 |
+| dripToken     | Bytes!               |                                |
+| referral      | Boolean!             |                       |
+| periodSeconds | BigInt               |                       |
+| dripAmount    | BigInt               |                     |
+| periodCount   | BigInt               |                     |
 | deposits      | [VolumeDripPlayer!]! | @derivedFrom(field: "volumeDrip")    |
 | periods       | [VolumeDripPeriod!]! | @derivedFrom(field: "volumeDrip")    |
-| deactivated   | Boolean!     |                                    |
-
+| deactivated   | Boolean!             |                                    |
+  
 
 # MultipleWinnersPrizeStrategy
 
