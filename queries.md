@@ -7,7 +7,7 @@ You can build your own queries using a [GraphQL Explorer](https://graphiql-onlin
 
 ### PrizePools
 
-Description: This query fetches the last 20 prize pools, the state of the pools and the balance from the protocol.
+Description: This query fetches the last 20 prize pools, the state of the pools and their balance from the protocol.
 
 ```graphql
 {
